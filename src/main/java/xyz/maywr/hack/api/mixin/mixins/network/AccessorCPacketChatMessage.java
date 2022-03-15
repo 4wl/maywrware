@@ -1,0 +1,16 @@
+package xyz.maywr.hack.api.mixin.mixins.network;
+
+import net.minecraft.network.play.client.CPacketChatMessage;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.gen.Accessor;
+
+@Mixin(CPacketChatMessage.class)
+public interface AccessorCPacketChatMessage {
+
+    @Accessor("message")
+    void setMessage(String msg);
+
+    @Accessor("message")
+    String getMessage();
+
+}

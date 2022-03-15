@@ -1,0 +1,29 @@
+{
+  "package": "xyz.maywr.hack.api.mixin.mixins",
+  "refmap": "mixin.refmap.json",
+  "required": true,
+  "target": "@env(DEFAULT)",
+  "compatibilityLevel": "JAVA_8",
+  "verbose": false,
+  "mixins": [
+    "client.MixinAbstractClientPlayer",
+    "client.MixinMinecraft",
+    "client.MixinPlayerControllerMP",
+    "client.MixinWorld",
+    "entity.ICPacketPlayer",
+    "entity.MixinEntityPlayerSP",
+    "gui.MixinGuiInventory",
+    "gui.MixinGuiScreen",
+    "network.AccessorCPacketChatMessage",
+    "network.AccessorCPacketUseEntity",
+    "network.AccessorSPacketChat",
+    "network.AccessorSPacketPlayerPosLook",
+    "network.MixinNetworkManager",
+    "render.AccessorEntityRenderer",
+    "render.AccessorRenderManager",
+    "render.MixinEntityRenderer",
+    "render.MixinRenderItem",
+    "player.MixinEntityPlayer",
+    "player.MixinMovementInput"
+  ]
+}
