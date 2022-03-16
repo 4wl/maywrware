@@ -12,6 +12,7 @@ import xyz.maywr.hack.client.modules.Module;
 import xyz.maywr.hack.client.modules.ModuleManifest;
 
 import java.awt.*;
+import java.lang.annotation.ElementType;
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -31,7 +32,8 @@ public class Watermark extends Module {
     @SubscribeEvent
     public void onRender2D (RenderGameOverlayEvent event) {
 
-        if (mode.getValue() == Mode.CSGO) {
+        //CSGO mode
+        if (mode.getValue() == Mode.CSGO && event.getType() == RenderGameOverlayEvent.ElementType.HOTBAR) {
 
             Format f = new SimpleDateFormat("HH:mm:ss");
             String time = f.format(new Date());
@@ -42,9 +44,11 @@ public class Watermark extends Module {
             RenderUtil.drawGradientSideways(X, Y - 2, MaywrWare.fontManager.getStringWidth(watermark) + (X + 3), (Y + 2), RenderUtil.generateRainbowFadingColor(2, true), RenderUtil.generateRainbowFadingColor(4, true));
             Gui.drawRect(X, Y, MaywrWare.fontManager.getStringWidth(watermark) + (X + 3), MaywrWare.fontManager.getFontHeight() + (Y + 2), Color.BLACK.getRGB());
             MaywrWare.fontManager.drawString(watermark, X + 1, Y + 2, Color.WHITE.getRGB());
+
         }
 
-        if (mode.getValue() == Mode.POOR) {
+        //POOR mode
+        if (mode.getValue() == Mode.POOR && event.getType() == RenderGameOverlayEvent.ElementType.TEXT) {
             int X = x.getValue();
             int Y = y.getValue();
             int color = new Color(red.getValue(), green.getValue(), blue.getValue()).getRGB();

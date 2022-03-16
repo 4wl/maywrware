@@ -1,5 +1,6 @@
 package xyz.maywr.hack.api.mixin.mixins.client;
 
+import net.minecraft.crash.CrashReport;
 import net.minecraftforge.common.MinecraftForge;
 import xyz.maywr.hack.MaywrWare;
 import xyz.maywr.hack.api.mixin.accessors.IMinecraft;
@@ -42,10 +43,16 @@ public abstract class MixinMinecraft implements IMinecraft {
         }
     }
 
+    @Inject(method = "crashed", at = @At("HEAD"))
+    public void crashed (CrashReport report, CallbackInfo ci) {
+        MaywrWare.configManager.saveConfig(MaywrWare.configManager.config.replaceFirst("maywrware/", ""));
+        MaywrWare.friendManager.unload();
+    }
 
-    @Inject(method = "init", at = @At("RETURN"))
-    public void init(CallbackInfo ci) {
-        MaywrWare.INSTANCE.init();
+    @Inject(method = "shutdown", at = @At("HEAD"))
+    public void shutdown (CallbackInfo ci) {
+        MaywrWare.configManager.saveConfig(MaywrWare.configManager.config.replaceFirst("maywrware/", ""));
+        MaywrWare.friendManager.unload();
     }
 
 }

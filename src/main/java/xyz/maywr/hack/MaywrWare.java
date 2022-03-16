@@ -1,5 +1,8 @@
 package xyz.maywr.hack;
 
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.lwjgl.Sys;
 import xyz.maywr.hack.client.managers.*;
 import net.minecraft.client.Minecraft;
@@ -30,15 +33,17 @@ public final class MaywrWare {
     public static ConfigManager configManager;
     public static FriendManager friendManager;
     public static EventManager eventManager;
-    public static SafeManager safeManager;
     public static TPSManager tpsManager;
-    public static CoordManager coordManager;
-
-    public static final MaywrWare INSTANCE = new MaywrWare();
 
     public static final long timeFromRun = System.currentTimeMillis();
 
-    public void init() {
+    @Mod.EventHandler
+    public void preInit (FMLPreInitializationEvent event) {
+
+    }
+    @Mod.EventHandler
+    public void init (FMLInitializationEvent event) {
+        Display.setTitle(MaywrWare.modid + " loading");
         fontManager = new FontManager();
         moduleManager = new ModuleManager();
         commandManager = new CommandManager();
@@ -46,23 +51,11 @@ public final class MaywrWare {
         friendManager = new FriendManager(new File(directory, "friends.json"));
         tpsManager = new TPSManager();
         configManager = new ConfigManager();
-        coordManager = new CoordManager();
-        Runtime.getRuntime().addShutdownHook(new ShutdownThread());
         Display.setTitle(MaywrWare.modid + " " + MaywrWare.VERSION);
     }
 
-
-
-    final static class ShutdownThread extends Thread {
-
-        @Override
-        public void run() {
-            logger.info("Trying to save config....");
-            MaywrWare.configManager.saveConfig(MaywrWare.configManager.config.replaceFirst("maywrware/", ""));
-            MaywrWare.friendManager.unload();
-            logger.info("Config saved!");
-        }
+    @Mod.EventHandler
+    public void postInit (FMLPostInitializationEvent event) {
 
     }
-
 }

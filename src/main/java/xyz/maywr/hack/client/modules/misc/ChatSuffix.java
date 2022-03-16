@@ -1,23 +1,26 @@
 package xyz.maywr.hack.client.modules.misc;
 
+import net.minecraft.network.play.client.CPacketChatMessage;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import xyz.maywr.hack.MaywrWare;
 import xyz.maywr.hack.api.mixin.mixins.network.AccessorCPacketChatMessage;
 import xyz.maywr.hack.client.events.PacketEvent;
 import xyz.maywr.hack.client.modules.Module;
 import xyz.maywr.hack.client.modules.ModuleManifest;
-import net.minecraft.network.play.client.CPacketChatMessage;
+
+import java.util.Arrays;
+import java.util.List;
 
 @ModuleManifest(label = "ChatSuffix", category = Module.Category.MISC)
 public class ChatSuffix extends Module {
 
-    String[] prefixies = {
+    List<String> prefixies = Arrays.asList(
         "/",
         ".",
         "$",
         "!",
-        "#"
-    };
+        "#");
+
 
     @SubscribeEvent
     public void onPacketSend(PacketEvent.Send event) {

@@ -53,7 +53,7 @@ public class ClickGui extends Module {
     @Override
     public void onTick() {
     if (!(mc.currentScreen instanceof TrollGui)) {
-            setEnabled(false);
+            setEnabled(false); //wthat the fuck is that hollow :sob:
         }
 
         if (customFov.getValue()) {

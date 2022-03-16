@@ -1,22 +1,16 @@
 package xyz.maywr.hack.client.managers;
 
-import net.minecraftforge.fml.common.eventhandler.Event;
-import xyz.maywr.hack.MaywrWare;
 import xyz.maywr.hack.api.interfaces.Minecraftable;
 import xyz.maywr.hack.api.util.Timer;
 import xyz.maywr.hack.client.events.PacketEvent;
-import xyz.maywr.hack.client.modules.Module;
 import xyz.maywr.hack.client.modules.combat.AutoCrystal;
-import net.minecraft.client.Minecraft;
 import net.minecraft.network.play.client.CPacketHeldItemChange;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 public class EventManager implements Minecraftable {
-
 
     public EventManager () {
         MinecraftForge.EVENT_BUS.register(this);
