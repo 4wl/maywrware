@@ -11,6 +11,8 @@ import org.lwjgl.input.Keyboard;
 import org.spongepowered.asm.mixin.*;
 import xyz.maywr.hack.MaywrWare;
 import xyz.maywr.hack.api.interfaces.Minecraftable;
+import xyz.maywr.hack.client.gui.TrollGui;
+import xyz.maywr.hack.client.gui.components.items.buttons.StringButton;
 import xyz.maywr.hack.client.modules.misc.GuiMove;
 import xyz.maywr.hack.client.modules.movement.Sprint;
 
@@ -27,8 +29,9 @@ public class MixinMovementInput extends MovementInput implements Minecraftable {
     }
 
     /**
-     * @author
+     * @author popbob
      */
+
     @Overwrite
     public void updatePlayerMoveState() {
         this.moveStrafe = 0.0F;
@@ -36,7 +39,8 @@ public class MixinMovementInput extends MovementInput implements Minecraftable {
         if (isKeyHeld(this.gameSettings.keyBindForward)) {
             ++this.moveForward;
             this.forwardKeyDown = true;
-            if (MaywrWare.moduleManager.getModuleByClass(Sprint.class).isEnabled()) mc.player.setSneaking(true);
+            if (MaywrWare.moduleManager.getModuleByClass(Sprint.class).isEnabled()) mc.player.setSprinting(true);
+            if (isKeyHeld(this.gameSettings.keyBindSprint)) mc.player.setSprinting(true);
         }
         else {
             this.forwardKeyDown = false;
@@ -72,7 +76,9 @@ public class MixinMovementInput extends MovementInput implements Minecraftable {
 
     public boolean isKeyHeld(KeyBinding keyBinding) {
         if (MaywrWare.moduleManager.getModuleByClass(GuiMove.class).isEnabled() && mc.currentScreen != null) {
-            return Keyboard.isKeyDown(keyBinding.getKeyCode());
+            if (!TrollGui.isListeningForText) {
+                return Keyboard.isKeyDown(keyBinding.getKeyCode());
+            }
         }
         return keyBinding.isKeyDown();
     }

@@ -40,7 +40,7 @@ public class Watermark extends Module {
 
             int X = x.getValue();
             int Y = y.getValue();
-            String watermark = "MAYWRWARE | " + mc.player.getName() + " | " + getActivity() + " | " + time;
+            String watermark = "MAYWRWARE | " + mc.player.getName() + " | " + (mc.isSingleplayer() ? "LOCAL" : mc.getCurrentServerData().serverIP).toUpperCase() + " | " + time;
             RenderUtil.drawGradientSideways(X, Y - 2, MaywrWare.fontManager.getStringWidth(watermark) + (X + 3), (Y + 2), RenderUtil.generateRainbowFadingColor(2, true), RenderUtil.generateRainbowFadingColor(4, true));
             Gui.drawRect(X, Y, MaywrWare.fontManager.getStringWidth(watermark) + (X + 3), MaywrWare.fontManager.getFontHeight() + (Y + 2), Color.BLACK.getRGB());
             MaywrWare.fontManager.drawString(watermark, X + 1, Y + 2, Color.WHITE.getRGB());
@@ -61,14 +61,11 @@ public class Watermark extends Module {
         }
     }
 
-    private String getActivity () {
-        return  (mc.isSingleplayer() ? "LOCAL" : mc.getCurrentServerData().serverIP).toUpperCase();
-    }
-
     public enum Mode {
 
         CSGO,
         POOR;
 
     }
+
 }

@@ -26,7 +26,7 @@ public class Component implements Minecraftable {
     private int height;
     private boolean open;
     public boolean drag;
-    private final List<Item> items = new ArrayList<>();
+    public final List<Item> items = new ArrayList<>();
     private boolean hidden = false;
     private final String name;
 

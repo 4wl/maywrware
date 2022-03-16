@@ -20,8 +20,9 @@ import java.util.Comparator;
 
 public class TrollGui extends GuiScreen {
 
-    private final ArrayList<Component> components = new ArrayList<>();
+    public final ArrayList<Component> components = new ArrayList<>();
     private static TrollGui INSTANCE = new TrollGui();
+    public static boolean isListeningForText = false;
 
     public TrollGui() {
         INSTANCE = this;

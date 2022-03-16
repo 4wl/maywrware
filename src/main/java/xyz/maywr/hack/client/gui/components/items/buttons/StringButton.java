@@ -44,11 +44,13 @@ public class StringButton extends Button {
     @Override
     public void onKeyTyped(char typedChar, int keyCode) {
         if(isListening) {
+            TrollGui.isListeningForText = true;
             switch (keyCode) {
                 case 1:
                     break;
                 case 28:
                     enterString();
+                    TrollGui.isListeningForText = false;
                     break;
                 case 14:
                     setString(removeLastChar(currentString.getString()));
