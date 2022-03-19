@@ -1,7 +1,10 @@
 package xyz.maywr.hack.client.modules.misc;
 
 import com.mojang.authlib.GameProfile;
+import net.minecraft.client.gui.Gui;
 import net.minecraft.network.play.client.CPacketUseEntity;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import xyz.maywr.hack.api.property.Setting;
 import xyz.maywr.hack.client.events.PacketEvent;
@@ -15,23 +18,25 @@ import java.util.UUID;
 public class FakePlayer extends Module {
 
     private final Setting<String> nameSetting = register(new Setting<>("Name", "maywr"));
-    private EntityOtherPlayerMP faleplayer = null;
+    private EntityOtherPlayerMP fakeplayer = null;
+    private ResourceLocation loc = null;
 
     @Override
     public void onEnable() {
         if (mc.player == null) return;
 
         String name = nameSetting.getValueAsString();
-        faleplayer = new EntityOtherPlayerMP(mc.world, new GameProfile(UUID.fromString("cc72ff00-a113-48f4-be18-2dda8db52355"), name));
-        faleplayer.copyLocationAndAnglesFrom(mc.player);
-        faleplayer.inventory = mc.player.inventory;
-        mc.world.spawnEntity(faleplayer);
+        fakeplayer = new EntityOtherPlayerMP(mc.world, new GameProfile(UUID.fromString("cc72ff00-a113-48f4-be18-2dda8db52355"), name));
+        fakeplayer.copyLocationAndAnglesFrom(mc.player);
+        fakeplayer.inventory = mc.player.inventory;
+        loc = fakeplayer.getLocationSkin();
+        mc.world.spawnEntity(fakeplayer);
     }
 
     @Override
     public void onDisable() {
-        if (faleplayer != null)
-        mc.world.removeEntity(faleplayer);
+        if (fakeplayer != null)
+        mc.world.removeEntity(fakeplayer);
     }
 
     @SubscribeEvent
@@ -43,6 +48,12 @@ public class FakePlayer extends Module {
                 //TODO fakeplayer that takes damage
             }
         }
+    }
 
+    @SubscribeEvent
+    public void onRender2D (RenderGameOverlayEvent event) {
+        if (loc == null) return;
+        System.out.println(loc.getPath());
+        Gui.drawScaledCustomSizeModalRect(100, 100, 50, 50, 50, 50, 50, 50,50, 50);
     }
 }

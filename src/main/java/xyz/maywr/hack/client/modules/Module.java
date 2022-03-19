@@ -14,7 +14,7 @@ import net.minecraft.client.Minecraft;
 import java.util.ArrayList;
 import java.util.List;
 
-public class  Module {
+public class Module {
 
     protected final Minecraft mc = Minecraft.getMinecraft();
 

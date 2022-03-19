@@ -3,6 +3,7 @@ package xyz.maywr.hack.client.managers;
 import xyz.maywr.hack.client.modules.Module;
 import xyz.maywr.hack.client.modules.client.*;
 import xyz.maywr.hack.client.modules.combat.*;
+import xyz.maywr.hack.client.modules.hud.TargetOverlay;
 import xyz.maywr.hack.client.modules.hud.Watermark;
 import xyz.maywr.hack.client.modules.misc.*;
 import xyz.maywr.hack.client.modules.movement.*;
@@ -55,6 +56,7 @@ public class ModuleManager {
 
         //HUD
         register(new Watermark());
+        register(new TargetOverlay());
 
         modules.forEach(Module::onLoad);
     }

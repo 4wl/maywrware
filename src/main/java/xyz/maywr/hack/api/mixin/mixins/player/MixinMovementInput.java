@@ -1,5 +1,6 @@
 package xyz.maywr.hack.api.mixin.mixins.player;
 
+import net.minecraft.client.gui.GuiNewChat;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.util.MovementInput;
 import org.spongepowered.asm.mixin.Mixin;
@@ -77,6 +78,7 @@ public class MixinMovementInput extends MovementInput implements Minecraftable {
     public boolean isKeyHeld(KeyBinding keyBinding) {
         if (MaywrWare.moduleManager.getModuleByClass(GuiMove.class).isEnabled() && mc.currentScreen != null) {
             if (!TrollGui.isListeningForText) {
+                if (mc.ingameGUI.getChatGUI().getChatOpen()) return keyBinding.isKeyDown();
                 return Keyboard.isKeyDown(keyBinding.getKeyCode());
             }
         }

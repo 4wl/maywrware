@@ -15,7 +15,6 @@ public @interface ModuleManifest {
     Module.Category category();
     int key() default Keyboard.KEY_NONE;
     boolean persistent() default false;
-    boolean drawn() default true;
     boolean listen() default true;
     int color() default -1;
 }

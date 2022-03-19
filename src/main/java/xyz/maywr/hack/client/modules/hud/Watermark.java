@@ -2,17 +2,14 @@ package xyz.maywr.hack.client.modules.hud;
 
 import net.minecraft.client.gui.Gui;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import xyz.maywr.hack.MaywrWare;
 import xyz.maywr.hack.api.property.Setting;
 import xyz.maywr.hack.api.util.render.RenderUtil;
-import xyz.maywr.hack.client.gui.TrollGui;
 import xyz.maywr.hack.client.modules.Module;
 import xyz.maywr.hack.client.modules.ModuleManifest;
 
 import java.awt.*;
-import java.lang.annotation.ElementType;
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -24,10 +21,10 @@ public class Watermark extends Module {
     private final Setting<Integer> x = register(new Setting<>("X", 5, 1, 400));
     private final Setting<Integer> y = register(new Setting<>("Y", 5, 1, 400));
 
-    public  final Setting<Boolean> rainbow = register(new Setting<>("Rainbow", true, s -> mode.getValue() == Mode.POOR));
-    private final Setting<Integer> red = register(new Setting<>("Red", 255, 0, 255, s -> mode.getValue() == Mode.POOR));
-    private final Setting<Integer> green = register(new Setting<>("Green", 255, 0, 255, s -> mode.getValue() == Mode.POOR));
-    private final Setting<Integer> blue = register(new Setting<>("Blue", 255, 0, 255, s -> mode.getValue() == Mode.POOR));
+    public  final Setting<Boolean> rainbow = register(new Setting<>("Rainbow", true, s -> mode.getValue() == Mode.TEXT));
+    private final Setting<Integer> red = register(new Setting<>("Red", 255, 0, 255, s -> mode.getValue() == Mode.TEXT));
+    private final Setting<Integer> green = register(new Setting<>("Green", 255, 0, 255, s -> mode.getValue() == Mode.TEXT));
+    private final Setting<Integer> blue = register(new Setting<>("Blue", 255, 0, 255, s -> mode.getValue() == Mode.TEXT));
 
     @SubscribeEvent
     public void onRender2D (RenderGameOverlayEvent event) {
@@ -47,8 +44,8 @@ public class Watermark extends Module {
 
         }
 
-        //POOR mode
-        if (mode.getValue() == Mode.POOR && event.getType() == RenderGameOverlayEvent.ElementType.TEXT) {
+        //TEXT mode
+        if (mode.getValue() == Mode.TEXT && event.getType() == RenderGameOverlayEvent.ElementType.TEXT) {
             int X = x.getValue();
             int Y = y.getValue();
             int color = new Color(red.getValue(), green.getValue(), blue.getValue()).getRGB();
@@ -64,7 +61,7 @@ public class Watermark extends Module {
     public enum Mode {
 
         CSGO,
-        POOR;
+        TEXT;
 
     }
 
