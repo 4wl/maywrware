@@ -1,11 +1,9 @@
 package xyz.maywr.hack.client.modules.hud;
 
 import net.minecraft.client.entity.EntityOtherPlayerMP;
-import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import xyz.maywr.hack.api.property.Setting;
@@ -13,10 +11,9 @@ import xyz.maywr.hack.api.util.render.RenderUtil;
 import xyz.maywr.hack.client.modules.Module;
 import xyz.maywr.hack.client.modules.ModuleManifest;
 
-import javax.swing.text.html.parser.Entity;
 import java.awt.*;
 
-@ModuleManifest(label = "TargetOverlay", category = Module.Category.HUD)
+@ModuleManifest(name = "TargetOverlay", category = Module.Category.HUD)
 public class TargetOverlay extends Module {
 
     public final Setting<Mode> mode = register(new Setting<>("Mode", Mode.ATTACKING));

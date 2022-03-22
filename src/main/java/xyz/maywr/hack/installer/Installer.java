@@ -1,6 +1,7 @@
 package xyz.maywr.hack.installer;
 
 import xyz.maywr.hack.MaywrWare;
+import xyz.maywr.hack.installer.actions.InstallAction;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -45,12 +46,6 @@ public class Installer {
         window.add(funnyPicLabel);
         window.setIconImage(iconImage);
 
-        JButton installButton = new JButton("Install");
-        installButton.setBounds(5, 165, 380, 30);
-        installButton.setFont(new Font("Montserrat Light", Font.PLAIN, 18));
-        installButton.setFocusPainted(false);
-        window.add(installButton);
-
         JLabel text = new JLabel(MaywrWare.modid + " " + MaywrWare.VERSION);
         text.setBounds(130, -10, 200, 50);
         text.setFont(new Font("Montserrat Light", Font.PLAIN, 18));
@@ -68,6 +63,13 @@ public class Installer {
         JTextField path = new JTextField("path to yo game");
         path.setBounds(5, 65, 360, 20);
         window.add(path);
+
+        JButton installButton = new JButton("Install");
+        installButton.setBounds(5, 165, 380, 30);
+        installButton.setFont(new Font("Montserrat Light", Font.PLAIN, 18));
+        installButton.setFocusPainted(false);
+        installButton.addActionListener(new InstallAction(path));
+        window.add(installButton);
 
         JButton choosePath = new JButton("...");
         choosePath.setBounds(366, 64, 22, 22);

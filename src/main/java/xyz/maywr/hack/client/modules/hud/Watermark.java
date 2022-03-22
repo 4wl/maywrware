@@ -14,7 +14,7 @@ import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-@ModuleManifest (label = "Watermark", category = Module.Category.HUD)
+@ModuleManifest (name = "Watermark", category = Module.Category.HUD)
 public class Watermark extends Module {
 
     private final Setting<Mode> mode = register(new Setting<>("Mode", Mode.CSGO));

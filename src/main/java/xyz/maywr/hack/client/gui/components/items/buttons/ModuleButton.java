@@ -4,7 +4,6 @@ package xyz.maywr.hack.client.gui.components.items.buttons;
 import xyz.maywr.hack.MaywrWare;
 import xyz.maywr.hack.api.property.Bind;
 import xyz.maywr.hack.api.property.Setting;
-import xyz.maywr.hack.api.util.ColorUtil;
 import xyz.maywr.hack.api.util.render.RenderUtil;
 import xyz.maywr.hack.client.gui.TrollGui;
 import xyz.maywr.hack.client.gui.components.items.Item;
@@ -23,7 +22,7 @@ public class ModuleButton extends Button {
     private boolean subOpen;
 
     public ModuleButton(Module module) {
-        super(module.getLabel());
+        super(module.getName());
         this.module = module;
         initSettings();
     }

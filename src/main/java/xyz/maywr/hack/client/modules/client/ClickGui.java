@@ -1,9 +1,6 @@
 package xyz.maywr.hack.client.modules.client;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import xyz.maywr.hack.api.property.Setting;
-import xyz.maywr.hack.client.events.UpdateEvent;
 import xyz.maywr.hack.client.gui.TrollGui;
 import xyz.maywr.hack.client.modules.Module;
 import xyz.maywr.hack.client.modules.ModuleManifest;
@@ -11,7 +8,7 @@ import net.minecraft.client.settings.GameSettings;
 import org.lwjgl.input.Keyboard;
 import java.awt.*;
 
-@ModuleManifest(label = "ClickGui", category = Module.Category.CLIENT, key = Keyboard.KEY_INSERT)
+@ModuleManifest(name = "ClickGui", category = Module.Category.CLIENT, key = Keyboard.KEY_INSERT)
 public class ClickGui extends Module {
 
     public final Setting<String> prefix = register(new Setting<>("Prefix", "."));

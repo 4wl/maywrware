@@ -1,12 +1,10 @@
 package xyz.maywr.hack.client.modules.movement;
 
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.TickEvent;
 import xyz.maywr.hack.api.property.Setting;
 import xyz.maywr.hack.client.modules.Module;
 import xyz.maywr.hack.client.modules.ModuleManifest;
 
-@ModuleManifest(label = "Sprint", category = Module.Category.MOVEMENT)
+@ModuleManifest(name = "Sprint", category = Module.Category.MOVEMENT)
 public class Sprint extends Module {
 
     private final Setting<Mode> mode = register(new Setting<>("Mode", Mode.FORWARD));

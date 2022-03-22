@@ -23,7 +23,7 @@ public class BindCommand extends Command {
             //no idea what that keyboard method does too lazy to test it lmao
             int index = Keyboard.getKeyIndex(args[2].toUpperCase());
             module.bind.setValue(new Bind(index));
-            MessageUtil.sendClientMessage(module.getLabel() + " has been bound to " + Keyboard.getKeyName(index), false);
+            MessageUtil.sendClientMessage(module.getName() + " has been bound to " + Keyboard.getKeyName(index), false);
         }
     }
 

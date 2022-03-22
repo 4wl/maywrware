@@ -3,6 +3,7 @@ package xyz.maywr.hack.client.managers;
 import xyz.maywr.hack.client.modules.Module;
 import xyz.maywr.hack.client.modules.client.*;
 import xyz.maywr.hack.client.modules.combat.*;
+import xyz.maywr.hack.client.modules.hud.ModuleList;
 import xyz.maywr.hack.client.modules.hud.TargetOverlay;
 import xyz.maywr.hack.client.modules.hud.Watermark;
 import xyz.maywr.hack.client.modules.misc.*;
@@ -42,9 +43,13 @@ public class ModuleManager {
         register(new Speed());
         register(new Step());
         register(new Sprint());
+        register(new NoSlow());
+        register(new Velocity());
+        register(new Jesus());
 
         //PLAYER
         register(new BuildHelper());
+        register(new NoHunger());
 
         //VISUAL
         register(new EnchantColor());
@@ -57,6 +62,7 @@ public class ModuleManager {
         //HUD
         register(new Watermark());
         register(new TargetOverlay());
+        register(new ModuleList());
 
         modules.forEach(Module::onLoad);
     }
@@ -94,7 +100,7 @@ public class ModuleManager {
     public final Module getModuleByLabel(String label) {
         Module module = null;
         for (final Module m : modules) {
-            if (m.getLabel().equalsIgnoreCase(label)) {
+            if (m.getName().equalsIgnoreCase(label)) {
                 module = m;
             }
         }

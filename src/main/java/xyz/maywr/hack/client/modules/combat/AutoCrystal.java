@@ -30,7 +30,7 @@ import net.minecraft.util.math.BlockPos;
 import java.awt.*;
 import java.util.*;
 
-@ModuleManifest(label = "AutoCrystal", category = Module.Category.COMBAT, color = 0x880000 /* red */)
+@ModuleManifest(name = "AutoCrystal", category = Module.Category.COMBAT, color = 0x880000 /* red */)
 public final class AutoCrystal extends Module {
 
     private final Setting<Page> page = register(new Setting<>("Page", Page.BREAK));

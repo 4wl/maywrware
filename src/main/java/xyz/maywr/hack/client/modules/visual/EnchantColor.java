@@ -7,7 +7,7 @@ import xyz.maywr.hack.client.modules.ModuleManifest;
 
 import java.awt.*;
 
-@ModuleManifest(label = "EnchantColor", listen = false, category = Module.Category.VISUAL, color = 0xff9933)
+@ModuleManifest(name = "EnchantColor", category = Module.Category.VISUAL, color = 0xff9933)
 public class EnchantColor extends Module {
 
     public  final Setting<Boolean> rainbow = register(new Setting<>("Rainbow", true));

@@ -11,8 +11,9 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 public @interface ModuleManifest {
-    String label() default "";
+    String name() default "";
     Module.Category category();
+    String description() default "No Description";
     int key() default Keyboard.KEY_NONE;
     boolean persistent() default false;
     boolean listen() default true;

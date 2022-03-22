@@ -14,7 +14,7 @@ import net.minecraft.client.entity.EntityOtherPlayerMP;
 
 import java.util.UUID;
 
-@ModuleManifest(label = "FakePlayer", listen = false, category = Module.Category.MISC, color = 0xff00ff00)
+@ModuleManifest(name = "FakePlayer", listen = false, category = Module.Category.MISC, color = 0xff00ff00)
 public class FakePlayer extends Module {
 
     private final Setting<String> nameSetting = register(new Setting<>("Name", "maywr"));

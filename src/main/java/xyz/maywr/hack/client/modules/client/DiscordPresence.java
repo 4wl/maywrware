@@ -2,11 +2,10 @@ package xyz.maywr.hack.client.modules.client;
 
 import xyz.maywr.hack.MaywrWare;
 import xyz.maywr.hack.api.property.Setting;
-import xyz.maywr.hack.client.managers.RPCManager;
 import xyz.maywr.hack.client.modules.Module;
 import xyz.maywr.hack.client.modules.ModuleManifest;
 
-@ModuleManifest(label = "RPC", category = Module.Category.CLIENT)
+@ModuleManifest(name = "RPC", category = Module.Category.CLIENT)
 public class DiscordPresence extends Module {
 
     private static DiscordPresence INSTANCE;

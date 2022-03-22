@@ -4,7 +4,6 @@ import com.mojang.realmsclient.gui.ChatFormatting;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
-import xyz.maywr.hack.MaywrWare;
 import xyz.maywr.hack.api.property.Bind;
 import xyz.maywr.hack.api.property.Setting;
 import xyz.maywr.hack.api.util.MessageUtil;
@@ -23,7 +22,7 @@ public class Module {
     public final Setting<Bind> bind = register(new Setting<>("Bind", new Bind(-10000)));
     public final Setting<Boolean> enabled = register(new Setting<>("Enabled", false));
 
-    private String label, suffix;
+    private String name, suffix;
     private Category category;
     private boolean persistent;
     private int color;
@@ -32,7 +31,7 @@ public class Module {
         suffix = "";
         if (getClass().isAnnotationPresent(ModuleManifest.class)) {
             ModuleManifest moduleManifest = getClass().getAnnotation(ModuleManifest.class);
-            label = moduleManifest.label();
+            name = moduleManifest.name();
             category = moduleManifest.category();
             bind.setValue(new Bind(moduleManifest.key()));
             persistent = moduleManifest.persistent();
@@ -63,14 +62,14 @@ public class Module {
         if (enabled) {
             MinecraftForge.EVENT_BUS.register(this);
             onEnable();
-            if(!this.getLabel().equalsIgnoreCase("ClickGUI")) {
-                MessageUtil.sendClientMessage(this.getLabel() + " was " + ChatFormatting.GREEN + "enabled", -44444);
+            if(!this.getName().equalsIgnoreCase("ClickGUI")) {
+                MessageUtil.sendClientMessage(this.getName() + " was " + ChatFormatting.GREEN + "enabled", -44444);
             }
         } else {
             MinecraftForge.EVENT_BUS.unregister(this);
             onDisable();
-            if(!this.getLabel().equalsIgnoreCase("ClickGUI")) {
-                MessageUtil.sendClientMessage( this.getLabel() + " was " + ChatFormatting.RED + "disabled", -44444);
+            if(!this.getName().equalsIgnoreCase("ClickGUI")) {
+                MessageUtil.sendClientMessage( this.getName() + " was " + ChatFormatting.RED + "disabled", -44444);
             }
         }
     }
@@ -118,8 +117,8 @@ public class Module {
         return category;
     }
 
-    public final String getLabel() {
-        return this.label;
+    public final String getName() {
+        return this.name;
     }
 
     public final void clearSuffix() {

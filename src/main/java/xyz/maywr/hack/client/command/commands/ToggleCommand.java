@@ -18,7 +18,7 @@ public class ToggleCommand extends Command {
         final Module module = MaywrWare.moduleManager.getModuleByLabel(args[1]);
         if (module != null) {
             module.toggle();
-            MessageUtil.sendClientMessage(module.getLabel() + " has been toggled " + (module.isEnabled() ? "on" : "off"), false);
+            MessageUtil.sendClientMessage(module.getName() + " has been toggled " + (module.isEnabled() ? "on" : "off"), false);
         }
     }
 }

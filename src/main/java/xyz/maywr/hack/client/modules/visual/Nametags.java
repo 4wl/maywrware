@@ -21,10 +21,9 @@ import net.minecraft.util.text.TextFormatting;
 import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
-import java.util.Map;
 import java.util.Objects;
 
-@ModuleManifest(label = "Nametags", listen = false, category = Module.Category.VISUAL, color = 0xff0066)
+@ModuleManifest(name = "Nametags", listen = false, category = Module.Category.VISUAL, color = 0xff0066)
 public final class Nametags extends Module {
 
     private final Setting<Boolean> armor = register(new Setting<>("Armor", true));
@@ -101,7 +100,6 @@ public final class Nametags extends Module {
         GlStateManager.scale(-scale, -scale, scale);
         GlStateManager.disableDepth();
 
-
         if(rect.getValue()) {
             if (gradientBorder.getValue()) {
                 RenderUtil.drawGradientBorderedRect(-width - 2, -(mc.fontRenderer.FONT_HEIGHT + 1), width + 2F, 1.5F, 0x55000000);
@@ -111,7 +109,6 @@ public final class Nametags extends Module {
         }
 
         if (armor.getValue()) {
-            GlStateManager.pushMatrix();
             int xOffset = -8;
             final int size = player.inventory.armorInventory.size();
             for (int i = 0; i < size; ++i) {

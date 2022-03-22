@@ -7,7 +7,7 @@ import xyz.maywr.hack.client.modules.ModuleManifest;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 
-@ModuleManifest(label = "MiddleClick", listen = false, category = Module.Category.CLIENT)
+@ModuleManifest(name = "MiddleClick", listen = false, category = Module.Category.CLIENT)
 public class MiddleClick extends Module {
 
     private static MiddleClick INSTANCE;

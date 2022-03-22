@@ -62,7 +62,7 @@ public class ConfigManager {
         if (!directory.exists()) {
             directory.mkdir();
         }
-        String featureName = config + getDirectory(feature) + feature.getLabel() + ".json";
+        String featureName = config + getDirectory(feature) + feature.getName() + ".json";
         Path outputFile = Paths.get(featureName);
         if (!Files.exists(outputFile)) {
             Files.createFile(outputFile);
@@ -125,7 +125,7 @@ public class ConfigManager {
     }
 
     private void loadSettings(Module feature) throws IOException {
-        String featureName = config + getDirectory(feature) + feature.getLabel() + ".json";
+        String featureName = config + getDirectory(feature) + feature.getName() + ".json";
         Path featurePath = Paths.get(featureName);
         if (!Files.exists(featurePath)) {
             return;

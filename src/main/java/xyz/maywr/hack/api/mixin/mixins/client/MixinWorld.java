@@ -14,7 +14,7 @@ public class MixinWorld {
     public void getWorldTime(CallbackInfoReturnable<Long> cir) {
         if (TimeChanger.INSTANCE.isEnabled()) {
             cir.cancel();
-            cir.setReturnValue((long)TimeChanger.INSTANCE.timeSetting.getValue());
+            cir.setReturnValue((long)TimeChanger.INSTANCE.timeSetting.getValue() * 1000);
         }
     }
 
