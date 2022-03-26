@@ -119,6 +119,7 @@ public class ConfigManager {
 
     //TODO: add everything with Settings here
     public void init() {
+        if (!new File("maywrware").exists()) new File("maywrware").mkdir();
         features.addAll(MaywrWare.moduleManager.getModules());
 
         loadConfig("modules");

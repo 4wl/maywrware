@@ -41,6 +41,7 @@ public final class MaywrWare {
     public void preInit (FMLPreInitializationEvent event) {
 
     }
+
     @Mod.EventHandler
     public void init (FMLInitializationEvent event) {
         Display.setTitle(MaywrWare.modid + " loading");

@@ -59,6 +59,7 @@ public class CommandManager {
                 new BindCommand(),
                 new FriendCommand(),
                 new SaveCommand(),
+                new TimerCommand(),
                 new TutorialCommand());
         
         MinecraftForge.EVENT_BUS.register(this);

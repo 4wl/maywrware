@@ -13,6 +13,10 @@ public class ColorUtil {
         return (Color.getHSBColor(hue / speed, s, 1f).getRGB());
     }
 
+    public static Color injectAlpha(final Color color, final int alpha) {
+        return new Color(color.getRed(), color.getGreen(), color.getBlue(), alpha);
+    }
+
     public static void color(int color) {
         GL11.glColor4f((color >> 16 & 0xFF) / 255f, (color >> 8 & 0xFF) / 255f, (color & 0xFF) / 255f, (color >> 24 & 0xFF) / 255f);
     }

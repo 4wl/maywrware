@@ -15,11 +15,9 @@ public class NoHunger extends Module {
     @SubscribeEvent
     public void onPacketSend(PacketEvent.Send event) {
         if (event.getPacket() instanceof CPacketPlayer) {
-
-            CPacketPlayer packet = (CPacketPlayer) event.getPacket();
+            CPacketPlayer packet = (CPacketPlayer)event.getPacket();
             ICPacketPlayer shit = (ICPacketPlayer) packet;
             shit.setOnGround(mc.player.fallDistance >= 0.0f || mc.playerController.getIsHittingBlock());
-
         }
     }
 }

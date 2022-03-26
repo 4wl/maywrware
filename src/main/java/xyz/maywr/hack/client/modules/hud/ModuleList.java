@@ -16,14 +16,9 @@ import java.util.List;
 @ModuleManifest(name = "ModuleList", category = Module.Category.HUD)
 public class ModuleList extends Module {
 
-    private final Setting<Float> x = register(new Setting<>("X", 5F, 1F, 1920F));
-    private final Setting<Float> y = register(new Setting<>("Y", 5F, 1F, 1080F));
-
-    public  final Setting<Boolean> chromo = register(new Setting<>("Chromo", true));
-    public  final Setting<Boolean> rainbow = register(new Setting<>("Rainbow", false));
-    private final Setting<Integer> red = register(new Setting<>("Red", 255, 0, 255));
-    private final Setting<Integer> green = register(new Setting<>("Green", 255, 0, 255));
-    private final Setting<Integer> blue = register(new Setting<>("Blue", 255, 0, 255));
+    private final Setting<Mode> mode = register(new Setting<>("Rendering", Mode.UP));
+    private final Setting<Float> x = register(new Setting<>("X", 5F, 1F, 960F));
+    private final Setting<Float> y = register(new Setting<>("Y", 5F, 1F, 540F));
 
     @SubscribeEvent
     public void onRender2D (RenderGameOverlayEvent event) {
@@ -37,22 +32,22 @@ public class ModuleList extends Module {
             Collections.reverse(enabledModules);
 
             float X = x.getValue() , Y = y.getValue();
-            float offset = 1f, rainbowInt = RenderUtil.generateRainbowFadingColor(offset, true);
+            float offset = 1f;
             for (String moduleName : enabledModules) {
-                //chromo
-                if (chromo.getValue()) {
-                    MaywrWare.fontManager.drawChromoShadowString(moduleName, X - MaywrWare.fontManager.getStringWidth(moduleName), Y);
-                    Y += MaywrWare.fontManager.getFontHeight();
-                } else if (rainbow.getValue()) {
-                    //rainbow
-                    MaywrWare.fontManager.drawString(moduleName, X - MaywrWare.fontManager.getStringWidth(moduleName), Y, (int) rainbowInt);
-                    Y += MaywrWare.fontManager.getFontHeight();
+                if (moduleName.equals("ClickGUI")) continue;
+                MaywrWare.fontManager.drawString(moduleName, X - MaywrWare.fontManager.getStringWidth(moduleName), Y, RenderUtil.generateRainbowFadingColor(offset, true));
+                if (mode.getValue() == Mode.UP) {
                     offset += 0.5f;
+                } else if (mode.getValue() == Mode.DOWN) {
+                    offset -= 0.5f;
                 }
-
+                    Y += MaywrWare.fontManager.getFontHeight();
+                }
             }
         }
-    }
 
+    public enum Mode {
+        UP, DOWN;
+    }
 
 }

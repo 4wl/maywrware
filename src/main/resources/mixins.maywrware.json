@@ -24,6 +24,7 @@
     "render.MixinEntityRenderer",
     "render.MixinRenderItem",
     "player.MixinEntityPlayer",
-    "player.MixinMovementInput"
+    "player.MixinMovementInput",
+    "player.MixinCPacketPlayer"
   ]
 }

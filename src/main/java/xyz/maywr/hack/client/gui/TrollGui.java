@@ -5,6 +5,7 @@ import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import xyz.maywr.hack.MaywrWare;
+import xyz.maywr.hack.api.util.render.RenderUtil;
 import xyz.maywr.hack.client.gui.components.Component;
 import xyz.maywr.hack.client.gui.components.items.Item;
 import xyz.maywr.hack.client.gui.components.items.buttons.ModuleButton;
@@ -14,6 +15,7 @@ import net.minecraft.client.gui.GuiScreen;
 import org.lwjgl.input.Mouse;
 import xyz.maywr.hack.client.modules.client.ClickGui;
 
+import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
