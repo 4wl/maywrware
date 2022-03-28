@@ -1,11 +1,11 @@
-package xyz.maywr.hack.client.gui.components.items.buttons;
+package xyz.maywr.hack.client.gui.clickgui.components.items.buttons;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
 import xyz.maywr.hack.MaywrWare;
 import xyz.maywr.hack.api.property.Setting;
 import xyz.maywr.hack.api.util.render.RenderUtil;
-import xyz.maywr.hack.client.gui.TrollGui;
-import xyz.maywr.hack.client.gui.components.Component;
+import xyz.maywr.hack.client.gui.clickgui.TrollGui;
+import xyz.maywr.hack.client.gui.clickgui.components.Component;
 import org.lwjgl.input.Mouse;
 
 public class Slider extends Button {

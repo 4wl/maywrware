@@ -10,7 +10,7 @@ import xyz.maywr.hack.client.modules.client.DiscordPresence;
 public class RPCManager extends Thread implements Minecraftable {
 
     private static RPCManager thread;
-    private static final DiscordRPC rpcIntance = DiscordRPC.INSTANCE;
+    private static final DiscordRPC rpcInstance = DiscordRPC.INSTANCE;
     private static final DiscordRichPresence richPresence = new DiscordRichPresence();
     private static final DiscordEventHandlers presenceHandlers = new DiscordEventHandlers();
 
@@ -21,20 +21,19 @@ public class RPCManager extends Thread implements Minecraftable {
 
     public RPCManager () {
         try {
-            rpcIntance.Discord_Initialize("952616642733547652", presenceHandlers, true, "");
+            rpcInstance.Discord_Initialize("952616642733547652", presenceHandlers, true, "");
             richPresence.startTimestamp = time;
         } catch (Exception ignored) {}
     }
 
     public void startRPC () {
-        thread = new RPCManager();
         thread.start();
     }
 
     public void stopRPC () {
-        thread.interrupt();
-        rpcIntance.Discord_ClearPresence();
-        rpcIntance.Discord_Shutdown();
+        this.interrupt();
+        rpcInstance.Discord_ClearPresence();
+        rpcInstance.Discord_Shutdown();
     }
 
 
@@ -44,7 +43,7 @@ public class RPCManager extends Thread implements Minecraftable {
         richPresence.details = details;
         richPresence.state = state;
 
-        rpcIntance.Discord_UpdatePresence(richPresence);
+        rpcInstance.Discord_UpdatePresence(richPresence);
     }
 
     private String getActivity () {
@@ -62,7 +61,7 @@ public class RPCManager extends Thread implements Minecraftable {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-            } catch (Exception ignored) {}
+            } catch (Exception e) {e.printStackTrace();}
         }
     }
 }

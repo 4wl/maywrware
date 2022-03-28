@@ -1,4 +1,4 @@
-package xyz.maywr.hack.client.gui.components.items;
+package xyz.maywr.hack.client.gui.clickgui.components.items;
 
 
 import xyz.maywr.hack.api.interfaces.Minecraftable;

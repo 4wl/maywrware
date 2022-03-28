@@ -14,17 +14,23 @@
     "entity.MixinEntityPlayerSP",
     "gui.MixinGuiInventory",
     "gui.MixinGuiScreen",
+    "gui.MixinMainMenu",
     "network.AccessorCPacketChatMessage",
     "network.AccessorCPacketUseEntity",
     "network.AccessorSPacketChat",
     "network.AccessorSPacketPlayerPosLook",
     "network.MixinNetworkManager",
+    "player.MixinCPacketPlayer",
+    "player.MixinEntityPlayer",
+    "player.MixinItemRenderer",
+    "player.MixinMovementInput",
     "render.AccessorEntityRenderer",
     "render.AccessorRenderManager",
     "render.MixinEntityRenderer",
-    "render.MixinRenderItem",
-    "player.MixinEntityPlayer",
-    "player.MixinMovementInput",
-    "player.MixinCPacketPlayer"
+    "render.MixinRenderItem"
+  ],
+  "client": [
+    "render.MixinItemRenderer",
+    "render.MixinLayerArmorBase"
   ]
 }

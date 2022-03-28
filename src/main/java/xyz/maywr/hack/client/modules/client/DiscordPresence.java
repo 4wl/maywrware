@@ -23,7 +23,7 @@ public class DiscordPresence extends Module {
     @Override
     public void onEnable() {
         if(mc.world == null) return; //thats kinda lame but rpc bugs if no world dunno why
-        MaywrWare.rpcManager.startRPC();
+        MaywrWare.rpcManager.start();
     }
 
     @Override

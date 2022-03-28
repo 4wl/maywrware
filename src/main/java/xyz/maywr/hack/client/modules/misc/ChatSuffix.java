@@ -2,11 +2,13 @@ package xyz.maywr.hack.client.modules.misc;
 
 import net.minecraft.network.play.client.CPacketChatMessage;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import xyz.maywr.hack.MaywrWare;
 import xyz.maywr.hack.api.mixin.mixins.network.AccessorCPacketChatMessage;
 import xyz.maywr.hack.api.property.Setting;
 import xyz.maywr.hack.client.events.PacketEvent;
 import xyz.maywr.hack.client.modules.Module;
 import xyz.maywr.hack.client.modules.ModuleManifest;
+import xyz.maywr.hack.client.modules.client.ClickGui;
 
 import java.util.Arrays;
 import java.util.List;
@@ -30,8 +32,13 @@ public class ChatSuffix extends Module {
             for (String prefix : prefixies) {
                 if (packet.getMessage().startsWith(prefix)) return;
             }
-
-            packet.setMessage(greenChat.getValue() ? "> " + ((CPacketChatMessage) event.getPacket()).getMessage()+ " | ｍａｙｗｒｗａｒｅ" : "" + ((CPacketChatMessage) event.getPacket()).getMessage()+ " | ｍａｙｗｒｗａｒｅ");
+            packet.setMessage(greenChat.getValue() ? "> " + ((CPacketChatMessage) event.getPacket()).getMessage()+ " | ｍａｙｗｒｗａｒｅ" : ((CPacketChatMessage) event.getPacket()).getMessage()+ " | ｍａｙｗｒｗａｒｅ");
         }
+    }
+
+    @Override
+    public void onEnable() {
+        if (prefixies.contains(ClickGui.getInstance().prefix.getValue())) return;
+        prefixies.add(ClickGui.getInstance().prefix.getValue());
     }
 }

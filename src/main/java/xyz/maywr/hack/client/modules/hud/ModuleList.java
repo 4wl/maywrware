@@ -1,5 +1,6 @@
 package xyz.maywr.hack.client.modules.hud;
 
+import net.minecraft.client.gui.Gui;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import xyz.maywr.hack.MaywrWare;
@@ -8,6 +9,7 @@ import xyz.maywr.hack.api.util.render.RenderUtil;
 import xyz.maywr.hack.client.modules.Module;
 import xyz.maywr.hack.client.modules.ModuleManifest;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -17,6 +19,7 @@ import java.util.List;
 public class ModuleList extends Module {
 
     private final Setting<Mode> mode = register(new Setting<>("Rendering", Mode.UP));
+    private final Setting<Boolean> background = register(new Setting<>("Background", true));
     private final Setting<Float> x = register(new Setting<>("X", 5F, 1F, 960F));
     private final Setting<Float> y = register(new Setting<>("Y", 5F, 1F, 540F));
 
@@ -35,6 +38,7 @@ public class ModuleList extends Module {
             float offset = 1f;
             for (String moduleName : enabledModules) {
                 if (moduleName.equals("ClickGUI")) continue;
+                if (background.getValue()) Gui.drawRect((int)X + 2, (int)Y, (int)X - MaywrWare.fontManager.getStringWidth(moduleName) - 1, (int)Y + MaywrWare.fontManager.getFontHeight(), Color.BLACK.getRGB());
                 MaywrWare.fontManager.drawString(moduleName, X - MaywrWare.fontManager.getStringWidth(moduleName), Y, RenderUtil.generateRainbowFadingColor(offset, true));
                 if (mode.getValue() == Mode.UP) {
                     offset += 0.5f;

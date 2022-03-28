@@ -1,19 +1,20 @@
-package xyz.maywr.hack.client.gui;
+package xyz.maywr.hack.client.gui.clickgui;
 
 
+import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import xyz.maywr.hack.MaywrWare;
 import xyz.maywr.hack.api.util.render.RenderUtil;
-import xyz.maywr.hack.client.gui.components.Component;
-import xyz.maywr.hack.client.gui.components.items.Item;
-import xyz.maywr.hack.client.gui.components.items.buttons.ModuleButton;
-import xyz.maywr.hack.client.managers.FontManager;
+import xyz.maywr.hack.client.gui.clickgui.components.Component;
+import xyz.maywr.hack.client.gui.clickgui.components.items.Item;
+import xyz.maywr.hack.client.gui.clickgui.components.items.buttons.ModuleButton;
 import xyz.maywr.hack.client.modules.Module;
 import net.minecraft.client.gui.GuiScreen;
 import org.lwjgl.input.Mouse;
 import xyz.maywr.hack.client.modules.client.ClickGui;
+import xyz.maywr.hack.client.modules.client.GuiGradient;
 
 import java.awt.*;
 import java.io.IOException;
@@ -77,6 +78,23 @@ public class TrollGui extends GuiScreen {
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         checkMouseWheel();
+        ScaledResolution sr = new ScaledResolution(mc);
+        GuiGradient gradient = GuiGradient.getInstance();
+
+        if (gradient.isEnabled()) {
+            drawGradientRect(0, 0, sr.getScaledWidth(), sr.getScaledHeight(),
+                    gradient.rainbow1.getValue() ? RenderUtil.generateRainbowFadingColor(1, true) :
+                    new Color(gradient.red1.getValue(),
+                            gradient.green1.getValue(),
+                            gradient.blue1.getValue(),
+                            gradient.alpha1.getValue()).getRGB(),
+                    gradient.rainbow2.getValue() ? RenderUtil.generateRainbowFadingColor(2, true) :
+                    new Color(gradient.red2.getValue(),
+                            gradient.green2.getValue(),
+                            gradient.blue2.getValue(),
+                            gradient.alpha2.getValue()).getRGB());
+        }
+
         for (Component component : components) {
             component.drawScreen(mouseX, mouseY, partialTicks);
         }
@@ -143,10 +161,10 @@ public class TrollGui extends GuiScreen {
     public void initGui() {
         if(ClickGui.getInstance().blur.getValue()){
             if (OpenGlHelper.shadersSupported && this.mc.getRenderViewEntity() instanceof EntityPlayer) {
-                if (this.mc.entityRenderer.getShaderGroup() != null) {
-                    this.mc.entityRenderer.getShaderGroup().deleteShaderGroup();
+                if (mc.entityRenderer.getShaderGroup() != null) {
+                    mc.entityRenderer.getShaderGroup().deleteShaderGroup();
                 }
-                this.mc.entityRenderer.loadShader(new ResourceLocation("shaders/post/blur.json"));
+                mc.entityRenderer.loadShader(new ResourceLocation("shaders/post/blur.json"));
             }
         }
     }

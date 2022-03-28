@@ -1,10 +1,10 @@
-package xyz.maywr.hack.client.gui.components.items.buttons;
+package xyz.maywr.hack.client.gui.clickgui.components.items.buttons;
 
 import xyz.maywr.hack.MaywrWare;
 import xyz.maywr.hack.api.util.render.RenderUtil;
-import xyz.maywr.hack.client.gui.TrollGui;
-import xyz.maywr.hack.client.gui.components.Component;
-import xyz.maywr.hack.client.gui.components.items.Item;
+import xyz.maywr.hack.client.gui.clickgui.TrollGui;
+import xyz.maywr.hack.client.gui.clickgui.components.Component;
+import xyz.maywr.hack.client.gui.clickgui.components.items.Item;
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.init.SoundEvents;
 import xyz.maywr.hack.api.interfaces.Minecraftable;

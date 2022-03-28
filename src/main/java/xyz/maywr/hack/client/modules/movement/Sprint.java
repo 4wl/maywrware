@@ -12,9 +12,11 @@ public class Sprint extends Module {
 
     @Override
     public void onTick() {
+        if (mc.gameSettings.keyBindSneak.isKeyDown() && !ignoreShift.getValue()) return;
         if (mode.getValue() == Mode.FORWARD) {
             if(mc.gameSettings.keyBindForward.isKeyDown()) mc.player.setSprinting(true);
-        } else if (mode.getValue() == Mode.EVERYWHERE) {
+        }
+        if (mode.getValue() == Mode.EVERYWHERE) {
             if(mc.gameSettings.keyBindForward.isKeyDown() || mc.gameSettings.keyBindBack.isKeyDown() || mc.gameSettings.keyBindRight.isKeyDown() || mc.gameSettings.keyBindLeft.isKeyDown()) {
                 mc.player.setSprinting(true);
             }

@@ -26,9 +26,8 @@ public class FakePlayer extends Module {
         if (mc.player == null) return;
 
         String name = nameSetting.getValueAsString();
-        fakeplayer = new EntityOtherPlayerMP(mc.world, new GameProfile(UUID.fromString("cc72ff00-a113-48f4-be18-2dda8db52355"), name));
+        fakeplayer = new EntityOtherPlayerMP(mc.world, new GameProfile(mc.player.getUniqueID(), name));
         fakeplayer.copyLocationAndAnglesFrom(mc.player);
-        fakeplayer.inventory = mc.player.inventory;
         loc = fakeplayer.getLocationSkin();
         mc.world.spawnEntity(fakeplayer);
     }

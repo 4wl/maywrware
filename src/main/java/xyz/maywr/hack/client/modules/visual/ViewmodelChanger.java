@@ -4,7 +4,7 @@ import xyz.maywr.hack.api.property.Setting;
 import xyz.maywr.hack.client.modules.Module;
 import xyz.maywr.hack.client.modules.ModuleManifest;
 
-@ModuleManifest(name = "ModelChanger", listen = false, category = Module.Category.VISUAL, color = 0xff0355ff)
+@ModuleManifest(name = "Viewmodel", listen = false, category = Module.Category.VISUAL, color = 0xff0355ff)
 public class ViewmodelChanger extends Module {
 
     public final Setting<Boolean> pauseOnEat = register(new Setting<>("Pause", true));

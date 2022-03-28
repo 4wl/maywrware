@@ -11,16 +11,19 @@ import xyz.maywr.hack.client.command.CommandManifest;
 @CommandManifest(label = "timer", aliases = "t")
 public class TimerCommand extends Command {
 
-    Timer timer;
+    Timer timer; String[] shit;
+
     @Override
     public void execute(String[] args) {
         timer = new Timer();
+        shit = args;
         MinecraftForge.EVENT_BUS.register(this);
     }
 
     @SubscribeEvent
     public void onTick (TickEvent.ClientTickEvent event) {
         if (timer == null) return;
-        if (timer.hasReached(1000)) MessageUtil.sendClientMessage("has", 11111);
+        timer.reset();
+        MessageUtil.sendClientMessage(String.valueOf(timer.hasReached(3)),true);
     }
 }

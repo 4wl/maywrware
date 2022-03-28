@@ -22,5 +22,4 @@ public class MixinRenderItem implements Minecraftable {
     private int renderEffect(final int glintVal) {
         return EnchantColor.INSTANCE.isEnabled() ? EnchantColor.INSTANCE.getColor() : glintVal;
     }
-
 }

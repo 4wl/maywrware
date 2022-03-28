@@ -1,19 +1,15 @@
 package xyz.maywr.hack.api.mixin.mixins.player;
 
-import net.minecraft.client.gui.GuiNewChat;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.util.MovementInput;
 import org.spongepowered.asm.mixin.Mixin;
-import net.minecraft.client.gui.GuiIngameMenu;
-import net.minecraft.client.renderer.InventoryEffectRenderer;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.util.MovementInputFromOptions;
 import org.lwjgl.input.Keyboard;
 import org.spongepowered.asm.mixin.*;
 import xyz.maywr.hack.MaywrWare;
 import xyz.maywr.hack.api.interfaces.Minecraftable;
-import xyz.maywr.hack.client.gui.TrollGui;
-import xyz.maywr.hack.client.gui.components.items.buttons.StringButton;
+import xyz.maywr.hack.client.gui.clickgui.TrollGui;
 import xyz.maywr.hack.client.modules.misc.GuiMove;
 import xyz.maywr.hack.client.modules.movement.Sprint;
 

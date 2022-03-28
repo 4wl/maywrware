@@ -3,9 +3,7 @@ package xyz.maywr.hack.client.managers;
 import xyz.maywr.hack.client.modules.Module;
 import xyz.maywr.hack.client.modules.client.*;
 import xyz.maywr.hack.client.modules.combat.*;
-import xyz.maywr.hack.client.modules.hud.ModuleList;
-import xyz.maywr.hack.client.modules.hud.TargetOverlay;
-import xyz.maywr.hack.client.modules.hud.Watermark;
+import xyz.maywr.hack.client.modules.hud.*;
 import xyz.maywr.hack.client.modules.misc.*;
 import xyz.maywr.hack.client.modules.movement.*;
 import xyz.maywr.hack.client.modules.player.*;
@@ -28,6 +26,7 @@ public class ModuleManager {
         register(new ClickGui());
         register(new MiddleClick());
         register(new DiscordPresence());
+        register(new GuiGradient());
 
         //COMBAT
         register(new AutoCrystal());
@@ -40,7 +39,6 @@ public class ModuleManager {
 
         //MOVEMENT
         register(new ReverseStep());
-        register(new Speed());
         register(new Step());
         register(new Sprint());
         register(new NoSlow());
@@ -58,11 +56,14 @@ public class ModuleManager {
         register(new ShulkerPreview());
         register(new TimeChanger());
         register(new Gamma());
+        register(new NoRender());
 
         //HUD
         register(new Watermark());
-        register(new TargetOverlay());
+        //register(new TargetOverlay());
         register(new ModuleList());
+        register(new Coords());
+        register(new Info());
 
         modules.forEach(Module::onLoad);
     }

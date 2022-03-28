@@ -7,7 +7,7 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 import xyz.maywr.hack.api.property.Bind;
 import xyz.maywr.hack.api.property.Setting;
 import xyz.maywr.hack.api.util.MessageUtil;
-import xyz.maywr.hack.client.gui.TrollGui;
+import xyz.maywr.hack.client.gui.clickgui.TrollGui;
 import net.minecraft.client.Minecraft;
 
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ public class Module {
     public final Setting<Bind> bind = register(new Setting<>("Bind", new Bind(-10000)));
     public final Setting<Boolean> enabled = register(new Setting<>("Enabled", false));
 
-    private String name, suffix;
+    private String name, suffix, description;
     private Category category;
     private boolean persistent;
     private int color;
@@ -33,6 +33,7 @@ public class Module {
             ModuleManifest moduleManifest = getClass().getAnnotation(ModuleManifest.class);
             name = moduleManifest.name();
             category = moduleManifest.category();
+            description = moduleManifest.description();
             bind.setValue(new Bind(moduleManifest.key()));
             persistent = moduleManifest.persistent();
             color = moduleManifest.color();
@@ -127,6 +128,10 @@ public class Module {
 
     public final void setSuffix(String suffix) {
         this.suffix = suffix;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
     public final String getSuffix() {

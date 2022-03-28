@@ -11,10 +11,10 @@ public class ReverseStep extends Module {
 
     @Override
     public void onTick() {
+        if (mc.player.isInWater() || mc.player.isInLava() || mc.player.isOnLadder()) {
+              return;
+            }
 
-    if (mc.player.isInWater() || mc.player.isInLava() || mc.player.isOnLadder()) {
-            return;
-        }
         if (mc.player.onGround) {
             mc.player.motionY -= (float)speed.getValue() / 10;
         }

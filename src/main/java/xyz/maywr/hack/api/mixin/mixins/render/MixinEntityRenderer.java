@@ -1,7 +1,10 @@
 package xyz.maywr.hack.api.mixin.mixins.render;
 
+import org.lwjgl.util.glu.Project;
+import org.spongepowered.asm.mixin.injection.Redirect;
 import xyz.maywr.hack.MaywrWare;
 import xyz.maywr.hack.client.modules.Module;
+import xyz.maywr.hack.client.modules.visual.AspectRatio;
 import xyz.maywr.hack.client.modules.visual.Nametags;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
@@ -12,6 +15,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import xyz.maywr.hack.client.modules.visual.NoRender;
 
 @Mixin(EntityRenderer.class)
 public abstract class MixinEntityRenderer {
@@ -38,4 +42,10 @@ public abstract class MixinEntityRenderer {
         }
     }
 
+    @Inject(method={"hurtCameraEffect"}, at={@At(value="HEAD")}, cancellable=true)
+    public void hurtCameraEffectHook(float ticks, CallbackInfo info) {
+        if (NoRender.INSTANCE.isEnabled() && NoRender.INSTANCE.hurtCamera.getValue()) {
+            info.cancel();
+        }
+    }
 }

@@ -1,7 +1,7 @@
 package xyz.maywr.hack.client.modules.client;
 
 import xyz.maywr.hack.api.property.Setting;
-import xyz.maywr.hack.client.gui.TrollGui;
+import xyz.maywr.hack.client.gui.clickgui.TrollGui;
 import xyz.maywr.hack.client.modules.Module;
 import xyz.maywr.hack.client.modules.ModuleManifest;
 import net.minecraft.client.settings.GameSettings;

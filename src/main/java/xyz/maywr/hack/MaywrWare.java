@@ -38,9 +38,7 @@ public final class MaywrWare {
     public static final long timeFromRun = System.currentTimeMillis();
 
     @Mod.EventHandler
-    public void preInit (FMLPreInitializationEvent event) {
-
-    }
+    public void preInit (FMLPreInitializationEvent event) {}
 
     @Mod.EventHandler
     public void init (FMLInitializationEvent event) {
@@ -51,12 +49,12 @@ public final class MaywrWare {
         eventManager = new EventManager();
         friendManager = new FriendManager(new File(directory, "friends.json"));
         tpsManager = new TPSManager();
+        rpcManager = new RPCManager();
         configManager = new ConfigManager();
         Display.setTitle(MaywrWare.modid + " " + MaywrWare.VERSION);
     }
 
     @Mod.EventHandler
-    public void postInit (FMLPostInitializationEvent event) {
+    public void postInit (FMLPostInitializationEvent event) {}
 
-    }
 }
