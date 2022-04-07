@@ -37,7 +37,7 @@ public class ModuleList extends Module {
             float X = x.getValue() , Y = y.getValue();
             float offset = 1f;
             for (String moduleName : enabledModules) {
-                if (moduleName.equals("ClickGUI")) continue;
+                if (moduleName.equalsIgnoreCase("ClickGUI")) continue;
                 if (background.getValue()) Gui.drawRect((int)X + 2, (int)Y, (int)X - MaywrWare.fontManager.getStringWidth(moduleName) - 1, (int)Y + MaywrWare.fontManager.getFontHeight(), Color.BLACK.getRGB());
                 MaywrWare.fontManager.drawString(moduleName, X - MaywrWare.fontManager.getStringWidth(moduleName), Y, RenderUtil.generateRainbowFadingColor(offset, true));
                 if (mode.getValue() == Mode.UP) {

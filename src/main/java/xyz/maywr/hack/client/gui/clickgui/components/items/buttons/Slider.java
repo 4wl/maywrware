@@ -4,7 +4,7 @@ import com.mojang.realmsclient.gui.ChatFormatting;
 import xyz.maywr.hack.MaywrWare;
 import xyz.maywr.hack.api.property.Setting;
 import xyz.maywr.hack.api.util.render.RenderUtil;
-import xyz.maywr.hack.client.gui.clickgui.TrollGui;
+import xyz.maywr.hack.client.gui.clickgui.ClickGUI;
 import xyz.maywr.hack.client.gui.clickgui.components.Component;
 import org.lwjgl.input.Mouse;
 
@@ -29,7 +29,7 @@ public class Slider extends Button {
         dragSetting(mouseX, mouseY);
         RenderUtil.drawRect(x, y, x + width + 7F, y + height - 0.5f, !isHovering(mouseX, mouseY) ? 0x11555555 : 0x88555555);
         RenderUtil.drawRect(x, y, ((Number)setting.getValue()).floatValue() <= min.floatValue() ? x : x + (width + 7F) * partialMultiplier(), y + height - 0.5f, 0x70555555);
-        MaywrWare.fontManager.drawString(getName() + " " + ChatFormatting.GRAY + (setting.getValue() instanceof Float ? ((Number)setting.getValue()) : ((Number)setting.getValue()).doubleValue()), x + 2F, y - 1F - TrollGui.getClickGui().getTextOffset(), 0xFFFFFFFF);
+        MaywrWare.fontManager.drawString(getName() + " " + ChatFormatting.GRAY + (setting.getValue() instanceof Float ? ((Number)setting.getValue()) : ((Number)setting.getValue()).doubleValue()), x + 2F, y - 1F - ClickGUI.getClickGui().getTextOffset(), 0xFFFFFFFF);
     }
 
     @Override
@@ -42,7 +42,7 @@ public class Slider extends Button {
 
     @Override
     public boolean isHovering(int mouseX, int mouseY) {
-        for (Component component : TrollGui.getClickGui().getComponents()) {
+        for (Component component : ClickGUI.getClickGui().getComponents()) {
             if (component.drag) {
                 return false;
             }

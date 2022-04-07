@@ -5,6 +5,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import xyz.maywr.hack.MaywrWare;
 import xyz.maywr.hack.api.mixin.mixins.network.AccessorCPacketChatMessage;
 import xyz.maywr.hack.api.property.Setting;
+import xyz.maywr.hack.client.events.ClientEvent;
 import xyz.maywr.hack.client.events.PacketEvent;
 import xyz.maywr.hack.client.modules.Module;
 import xyz.maywr.hack.client.modules.ModuleManifest;
@@ -36,9 +37,15 @@ public class ChatSuffix extends Module {
         }
     }
 
+    @SubscribeEvent
+    public void onSettingChange(ClientEvent event) {
+        if (event.getSetting() == ClickGui.getInstance().prefix) {
+            prefixies.add(ClickGui.getInstance().prefix.getValue());
+        }
+    }
+
     @Override
     public void onEnable() {
-        if (prefixies.contains(ClickGui.getInstance().prefix.getValue())) return;
         prefixies.add(ClickGui.getInstance().prefix.getValue());
     }
 }

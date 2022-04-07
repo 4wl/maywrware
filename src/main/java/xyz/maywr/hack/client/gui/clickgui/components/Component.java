@@ -5,7 +5,7 @@ import net.minecraft.util.ResourceLocation;
 import xyz.maywr.hack.MaywrWare;
 import xyz.maywr.hack.api.interfaces.Minecraftable;
 import xyz.maywr.hack.api.util.render.RenderUtil;
-import xyz.maywr.hack.client.gui.clickgui.TrollGui;
+import xyz.maywr.hack.client.gui.clickgui.ClickGUI;
 import xyz.maywr.hack.client.gui.clickgui.components.items.Item;
 import xyz.maywr.hack.client.gui.clickgui.components.items.buttons.Button;
 import xyz.maywr.hack.client.modules.client.ClickGui;
@@ -63,7 +63,7 @@ public class Component implements Minecraftable {
         if (open) {
             RenderUtil.drawRect(x, y + 12F, x + width, y + height + totalItemHeight - 2, new Color(0, 0, 0, ClickGui.getInstance().alpha.getValue()).getRGB());
         }
-        MaywrWare.fontManager.drawString(getName(), x + 2, y - 4F - TrollGui.getClickGui().getTextOffset(), 0xFFFFFF);
+        MaywrWare.fontManager.drawString(getName(), x + 2, y - 4F - ClickGUI.getClickGui().getTextOffset(), 0xFFFFFF);
         if (open) {
             float y = getY() + getHeight() - 3F;
             for (int i = 0; i < getItems().size(); ++i) {
@@ -85,7 +85,7 @@ public class Component implements Minecraftable {
         if (mouseButton == 0 && isHovering(mouseX, mouseY)) {
             x2 = x - mouseX;
             y2 = y - mouseY;
-            for (Component component : TrollGui.getClickGui().getComponents()) {
+            for (Component component : ClickGUI.getClickGui().getComponents()) {
                 if (component.drag) {
                     component.drag = false;
                 }

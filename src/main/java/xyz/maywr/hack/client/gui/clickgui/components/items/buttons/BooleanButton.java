@@ -3,7 +3,7 @@ package xyz.maywr.hack.client.gui.clickgui.components.items.buttons;
 import xyz.maywr.hack.MaywrWare;
 import xyz.maywr.hack.api.property.Setting;
 import xyz.maywr.hack.api.util.render.RenderUtil;
-import xyz.maywr.hack.client.gui.clickgui.TrollGui;
+import xyz.maywr.hack.client.gui.clickgui.ClickGUI;
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.init.SoundEvents;
 
@@ -22,7 +22,7 @@ public class BooleanButton extends Button {
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         RenderUtil.drawRect(x, y, x + width + 7F, y + height - 0.5f, getColor(isHovering(mouseX, mouseY)));
-        MaywrWare.fontManager.drawString(getName(), x + 3F, y - 1F - TrollGui.getClickGui().getTextOffset(), getState() ? getColor() : new Color(160, 160, 160, 255).getRGB());
+        MaywrWare.fontManager.drawString(getName(), x + 3F, y - 1F - ClickGUI.getClickGui().getTextOffset(), getState() ? getColor() : new Color(160, 160, 160, 255).getRGB());
     }
 
     @Override

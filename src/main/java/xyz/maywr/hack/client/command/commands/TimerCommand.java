@@ -22,8 +22,7 @@ public class TimerCommand extends Command {
 
     @SubscribeEvent
     public void onTick (TickEvent.ClientTickEvent event) {
-        if (timer == null) return;
-        timer.reset();
-        MessageUtil.sendClientMessage(String.valueOf(timer.hasReached(3)),true);
+        MessageUtil.sendClientMessage(String.valueOf(timer.getCurrent()), true);
+
     }
 }

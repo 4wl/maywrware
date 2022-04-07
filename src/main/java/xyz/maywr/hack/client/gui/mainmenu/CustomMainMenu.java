@@ -24,7 +24,7 @@ public class CustomMainMenu extends GuiScreen {
         int height = scaledResolution.getScaledHeight();
         int width = scaledResolution.getScaledWidth();
         Gui.drawScaledCustomSizeModalRect(0, 0, width, height, width, height, width, height, width, height);
-        menuFontRenderer.drawString("maywrware 0.1", width / 2 - (menuFontRenderer.getStringWidth("maywrware 0.1") / 2), height / 2 - (menuFontRenderer.fontHeight / 2) - (height / 3), Color.WHITE.getRGB());
+        menuFontRenderer.drawString("maywrware 0.2", width / 2 - (menuFontRenderer.getStringWidth("maywrware 0.2") / 2), height / 2 - (menuFontRenderer.fontHeight / 2) - (height / 3), Color.WHITE.getRGB());
 
     }
 

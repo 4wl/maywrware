@@ -48,11 +48,4 @@ public class FakePlayer extends Module {
             }
         }
     }
-
-    @SubscribeEvent
-    public void onRender2D (RenderGameOverlayEvent event) {
-        if (loc == null) return;
-        System.out.println(loc.getPath());
-        Gui.drawScaledCustomSizeModalRect(100, 100, 50, 50, 50, 50, 50, 50,50, 50);
-    }
 }

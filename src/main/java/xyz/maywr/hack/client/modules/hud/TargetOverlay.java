@@ -6,6 +6,7 @@ import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import xyz.maywr.hack.MaywrWare;
 import xyz.maywr.hack.api.property.Setting;
 import xyz.maywr.hack.api.util.render.RenderUtil;
 import xyz.maywr.hack.client.modules.Module;
@@ -23,7 +24,7 @@ public class TargetOverlay extends Module {
 
     @SubscribeEvent
     public void onRender2D (RenderGameOverlayEvent event) {
-        if (event.getType() == RenderGameOverlayEvent.ElementType.HOTBAR) {
+        if (event.getType() == RenderGameOverlayEvent.ElementType.TEXT) {
 
             switch (mode.getValue()) {
                 case POINTED: current = (EntityLivingBase) mc.pointedEntity; break;
@@ -45,8 +46,8 @@ public class TargetOverlay extends Module {
     }
 
     private enum Mode {
-        CLOSEST,
         ATTACKING,
-        POINTED
+        POINTED,
+        CLOSEST
     }
 }

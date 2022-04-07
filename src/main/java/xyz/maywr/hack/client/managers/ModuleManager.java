@@ -36,6 +36,7 @@ public class ModuleManager {
         register(new FakePlayer());
         register(new GuiMove());
         register(new ChatSuffix());
+        register(new AutoFish());
 
         //MOVEMENT
         register(new ReverseStep());

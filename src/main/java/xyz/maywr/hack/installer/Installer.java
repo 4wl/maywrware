@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.Objects;
 
 public class Installer {
 
@@ -19,7 +20,7 @@ public class Installer {
         }
 
         try {
-            GraphicsEnvironment.getLocalGraphicsEnvironment().registerFont(Font.createFont(Font.TRUETYPE_FONT, Installer.class.getClassLoader().getResourceAsStream("assets/fontie.ttf")));
+            GraphicsEnvironment.getLocalGraphicsEnvironment().registerFont(Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(Installer.class.getClassLoader().getResourceAsStream("assets/fontie.ttf"))));
         } catch (FontFormatException | IOException e) {
             e.printStackTrace();
         }
@@ -36,8 +37,8 @@ public class Installer {
 
         BufferedImage picImage = null, iconImage = null;
         try {
-            picImage = ImageIO.read(Installer.class.getClassLoader().getResourceAsStream("assets/maywrware/funnies/fridge.png"));
-            iconImage = ImageIO.read(Installer.class.getClassLoader().getResourceAsStream("assets/maywrware/funnies/anime.png"));
+            picImage = ImageIO.read(Objects.requireNonNull(Installer.class.getClassLoader().getResourceAsStream("assets/maywrware/funnies/fridge.png")));
+            iconImage = ImageIO.read(Objects.requireNonNull(Installer.class.getClassLoader().getResourceAsStream("assets/maywrware/funnies/anime.png")));
         } catch (IOException e) { e.printStackTrace(); }
 
         ImageIcon picture = new ImageIcon(picImage);

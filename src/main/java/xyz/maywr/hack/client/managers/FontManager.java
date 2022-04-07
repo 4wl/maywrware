@@ -1,5 +1,6 @@
 package xyz.maywr.hack.client.managers;
 
+import lombok.experimental.UtilityClass;
 import xyz.maywr.hack.api.interfaces.*;
 import xyz.maywr.hack.api.interfaces.Minecraftable;
 import xyz.maywr.hack.api.util.font.CustomFontRenderer;
@@ -36,7 +37,7 @@ public class FontManager implements Minecraftable {
             return fontRenderer.getStringWidth(text);
     }
 
-    public void drawChromoString (String text, float x, float y) {
+    public void drawChromoString(String text, float x, float y) {
         char[] femboy = text.toCharArray();
 
         int X = (int) x;
@@ -51,7 +52,7 @@ public class FontManager implements Minecraftable {
         }
     }
 
-    public void drawChromoShadowString (String text, float x, float y) {
+    public void drawChromoShadowString(String text, float x, float y) {
         char[] femboy = text.toCharArray();
 
         int X = (int) x;
@@ -64,5 +65,16 @@ public class FontManager implements Minecraftable {
             this.drawStringWithShadow(letter, X, y, color);
             X += getStringWidth(letter); offset -= 0.3f;
         }
+    }
+
+    public int getChromoStringWidth(String string) {
+        int result = 0;
+        char[] femboy = string.toCharArray();
+
+        for (char c : femboy) {
+            String letter = String.valueOf(c);
+            result += this.getStringWidth(letter);
+        }
+        return result;
     }
 }

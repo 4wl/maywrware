@@ -9,7 +9,6 @@ import xyz.maywr.hack.client.modules.client.DiscordPresence;
 
 public class RPCManager extends Thread implements Minecraftable {
 
-    private static RPCManager thread;
     private static final DiscordRPC rpcInstance = DiscordRPC.INSTANCE;
     private static final DiscordRichPresence richPresence = new DiscordRichPresence();
     private static final DiscordEventHandlers presenceHandlers = new DiscordEventHandlers();
@@ -27,7 +26,7 @@ public class RPCManager extends Thread implements Minecraftable {
     }
 
     public void startRPC () {
-        thread.start();
+        this.start();
     }
 
     public void stopRPC () {

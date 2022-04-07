@@ -9,7 +9,7 @@ import org.lwjgl.input.Keyboard;
 import org.spongepowered.asm.mixin.*;
 import xyz.maywr.hack.MaywrWare;
 import xyz.maywr.hack.api.interfaces.Minecraftable;
-import xyz.maywr.hack.client.gui.clickgui.TrollGui;
+import xyz.maywr.hack.client.gui.clickgui.ClickGUI;
 import xyz.maywr.hack.client.modules.misc.GuiMove;
 import xyz.maywr.hack.client.modules.movement.Sprint;
 
@@ -73,7 +73,7 @@ public class MixinMovementInput extends MovementInput implements Minecraftable {
 
     public boolean isKeyHeld(KeyBinding keyBinding) {
         if (MaywrWare.moduleManager.getModuleByClass(GuiMove.class).isEnabled() && mc.currentScreen != null) {
-            if (!TrollGui.isListeningForText) {
+            if (!ClickGUI.isListeningForText) {
                 if (mc.ingameGUI.getChatGUI().getChatOpen()) return keyBinding.isKeyDown();
                 return Keyboard.isKeyDown(keyBinding.getKeyCode());
             }

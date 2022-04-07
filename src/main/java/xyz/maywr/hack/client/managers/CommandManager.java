@@ -60,7 +60,9 @@ public class CommandManager {
                 new FriendCommand(),
                 new SaveCommand(),
                 new TimerCommand(),
-                new TutorialCommand());
+                new TutorialCommand(),
+                new ImgurCommand(),
+                new WebhookCommand());
         
         MinecraftForge.EVENT_BUS.register(this);
     }

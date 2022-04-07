@@ -9,5 +9,7 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 public @interface CommandManifest {
     String label();
+    String usage() default "";
+    String description() default "";
     String[] aliases() default {};
 }

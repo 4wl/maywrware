@@ -21,25 +21,25 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 
-public class TrollGui extends GuiScreen {
+public class ClickGUI extends GuiScreen {
 
     public final ArrayList<Component> components = new ArrayList<>();
-    private static TrollGui INSTANCE = new TrollGui();
+    private static ClickGUI INSTANCE = new ClickGUI();
     public static boolean isListeningForText = false;
 
-    public TrollGui() {
+    public ClickGUI() {
         INSTANCE = this;
         load();
     }
 
-    public static TrollGui getInstance() {
+    public static ClickGUI getInstance() {
         if(INSTANCE == null) {
-            INSTANCE = new TrollGui();
+            INSTANCE = new ClickGUI();
         }
         return INSTANCE;
     }
 
-    public static TrollGui getClickGui() {
+    public static ClickGUI getClickGui() {
         return getInstance();
     }
 
@@ -175,5 +175,6 @@ public class TrollGui extends GuiScreen {
         if (this.mc.entityRenderer.getShaderGroup() != null) {
             this.mc.entityRenderer.getShaderGroup().deleteShaderGroup();
         }
+
     }
 }

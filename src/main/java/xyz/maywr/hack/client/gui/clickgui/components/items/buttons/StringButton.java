@@ -6,7 +6,7 @@ import xyz.maywr.hack.MaywrWare;
 import xyz.maywr.hack.api.property.Setting;
 import xyz.maywr.hack.api.util.render.RenderUtil;
 import xyz.maywr.hack.client.events.ClientEvent;
-import xyz.maywr.hack.client.gui.clickgui.TrollGui;
+import xyz.maywr.hack.client.gui.clickgui.ClickGUI;
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.util.ChatAllowedCharacters;
@@ -27,9 +27,9 @@ public class StringButton extends Button {
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         RenderUtil.drawRect(x, y, x + width + 7F, y + height - 0.5f, getColor(isHovering(mouseX, mouseY)));
         if(isListening) {
-            MaywrWare.fontManager.drawString(currentString.getString() + "_", x + 2F, y - 1F - TrollGui.getClickGui().getTextOffset(), getState() ? 0xFFFFFFFF : 0xFFAAAAAA);
+            MaywrWare.fontManager.drawString(currentString.getString() + "_", x + 2F, y - 1F - ClickGUI.getClickGui().getTextOffset(), getState() ? 0xFFFFFFFF : 0xFFAAAAAA);
         } else {
-            MaywrWare.fontManager.drawString((setting.getName() + " " + ChatFormatting.GRAY + setting.getValue()), x + 2F, y - 1F - TrollGui.getClickGui().getTextOffset(), getState() ? 0xFFFFFFFF : 0xFFAAAAAA);
+            MaywrWare.fontManager.drawString((setting.getName() + " " + ChatFormatting.GRAY + setting.getValue()), x + 2F, y - 1F - ClickGUI.getClickGui().getTextOffset(), getState() ? 0xFFFFFFFF : 0xFFAAAAAA);
         }
     }
 
@@ -44,13 +44,13 @@ public class StringButton extends Button {
     @Override
     public void onKeyTyped(char typedChar, int keyCode) {
         if(isListening) {
-            TrollGui.isListeningForText = true;
+            ClickGUI.isListeningForText = true;
             switch (keyCode) {
                 case 1:
                     break;
                 case 28:
                     enterString();
-                    TrollGui.isListeningForText = false;
+                    ClickGUI.isListeningForText = false;
                     break;
                 case 14:
                     setString(removeLastChar(currentString.getString()));

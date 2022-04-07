@@ -8,7 +8,7 @@ import xyz.maywr.hack.client.command.CommandManifest;
 import xyz.maywr.hack.client.modules.Module;
 import org.lwjgl.input.Keyboard;
 
-@CommandManifest(label = "Bind", aliases = {"b"})
+@CommandManifest(label = "Bind", usage = "", description = "", aliases = {"b"})
 public class BindCommand extends Command {
 
     @Override

@@ -1,13 +1,15 @@
 package xyz.maywr.hack.client.modules;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
+import lombok.Getter;
+import lombok.Setter;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import xyz.maywr.hack.api.property.Bind;
 import xyz.maywr.hack.api.property.Setting;
 import xyz.maywr.hack.api.util.MessageUtil;
-import xyz.maywr.hack.client.gui.clickgui.TrollGui;
+import xyz.maywr.hack.client.gui.clickgui.ClickGUI;
 import net.minecraft.client.Minecraft;
 
 import java.util.ArrayList;
@@ -22,10 +24,10 @@ public class Module {
     public final Setting<Bind> bind = register(new Setting<>("Bind", new Bind(-10000)));
     public final Setting<Boolean> enabled = register(new Setting<>("Enabled", false));
 
-    private String name, suffix, description;
-    private Category category;
-    private boolean persistent;
-    private int color;
+    @Getter @Setter private String name, suffix, description;
+    @Getter @Setter private Category category;
+    @Getter private boolean persistent;
+    @Getter @Setter private int color;
 
     public Module() {
         suffix = "";
@@ -40,10 +42,14 @@ public class Module {
         }
     }
 
+    public boolean shouldNotify() {
+        return true;
+    }
+
     public final Setting register(Setting setting) {
         this.settings.add(setting);
-        if (mc.currentScreen instanceof TrollGui) {
-            TrollGui.getInstance().updateModule(this);
+        if (mc.currentScreen instanceof ClickGUI) {
+            ClickGUI.getInstance().updateModule(this);
         }
         return setting;
     }
@@ -63,13 +69,13 @@ public class Module {
         if (enabled) {
             MinecraftForge.EVENT_BUS.register(this);
             onEnable();
-            if(!this.getName().equalsIgnoreCase("ClickGUI")) {
+            if(shouldNotify()) {
                 MessageUtil.sendClientMessage(this.getName() + " was " + ChatFormatting.GREEN + "enabled", -44444);
             }
         } else {
             MinecraftForge.EVENT_BUS.unregister(this);
             onDisable();
-            if(!this.getName().equalsIgnoreCase("ClickGUI")) {
+            if(shouldNotify()) {
                 MessageUtil.sendClientMessage( this.getName() + " was " + ChatFormatting.RED + "disabled", -44444);
             }
         }
@@ -82,6 +88,9 @@ public class Module {
 
     public void disable() {
         setEnabled(false);
+        if(!this.getName().equalsIgnoreCase("ClickGUI")) {
+            MessageUtil.sendClientMessage( this.getName() + " was " + ChatFormatting.RED + "disabled", -44444);
+        }
     }
 
     public void onRender3D () {}
@@ -106,40 +115,11 @@ public class Module {
         return enabled.getValue();
     }
 
-    public final boolean isPersistent() {
-        return persistent;
-    }
-
-    public int getColor() {
-        return color;
-    }
-
-    public final Category getCategory() {
-        return category;
-    }
-
-    public final String getName() {
-        return this.name;
-    }
-
     public final void clearSuffix() {
         suffix = "";
     }
 
-    public final void setSuffix(String suffix) {
-        this.suffix = suffix;
-    }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public final String getSuffix() {
-        if (suffix.length() == 0) {
-            return "";
-        }
-        return " " + ChatFormatting.DARK_GRAY + "[" + ChatFormatting.WHITE + suffix + ChatFormatting.DARK_GRAY + "]";
-    }
 
     @SubscribeEvent
     public void updateEvent (TickEvent.ClientTickEvent event) {
@@ -156,21 +136,12 @@ public class Module {
         MISC("Misc", 0xFF7C00FF),
         HUD("HUD", 0xFF7C00FF);
 
-        final int color;
-        final String label;
+        @Getter final int color;
+        @Getter final String label;
 
         Category(String label, int color) {
             this.color = color;
             this.label = label;
         }
-
-        public final int getColor() {
-            return color;
-        }
-
-        public final String getLabel() {
-            return label;
-        }
-
-        }
     }
+}

@@ -8,6 +8,10 @@ public class Timer {
         current = -1;
     }
 
+    public long getCurrent() {
+        return current;
+    }
+
     public final boolean hasReached(final long delay) {
         return System.currentTimeMillis() - this.current >= delay;
     }

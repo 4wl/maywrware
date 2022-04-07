@@ -9,11 +9,9 @@ import xyz.maywr.hack.client.modules.ModuleManifest;
 public class DiscordPresence extends Module {
 
     private static DiscordPresence INSTANCE;
-
     public DiscordPresence() {
         INSTANCE = this;
     }
-
     public static DiscordPresence getInstance() {
         return INSTANCE;
     }

@@ -5,7 +5,7 @@ import xyz.maywr.hack.MaywrWare;
 import xyz.maywr.hack.api.property.Bind;
 import xyz.maywr.hack.api.property.Setting;
 import xyz.maywr.hack.api.util.render.RenderUtil;
-import xyz.maywr.hack.client.gui.clickgui.TrollGui;
+import xyz.maywr.hack.client.gui.clickgui.ClickGUI;
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.init.SoundEvents;
 import org.lwjgl.input.Keyboard;
@@ -25,9 +25,9 @@ public class BindButton extends Button {
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         RenderUtil.drawRect(x, y, x + width + 7F, y + height - 0.5f, getColor(isHovering(mouseX, mouseY)));
         if (isListening) {
-            MaywrWare.fontManager.drawString("Listening..", x + 2, y - 1 - TrollGui.getClickGui().getTextOffset(), getState() ? 0xFFFFFFFF : 0xFFAAAAAA);
+            MaywrWare.fontManager.drawString("Listening..", x + 2, y - 1 - ClickGUI.getClickGui().getTextOffset(), getState() ? 0xFFFFFFFF : 0xFFAAAAAA);
         } else {
-            MaywrWare.fontManager.drawString(setting.getName() + " " + ChatFormatting.GRAY + setting.getValue().toString(), x + 2.3F, y - 1.7F - TrollGui.getClickGui().getTextOffset(), getState() ? 0xFFFFFFFF : 0xFFAAAAAA);
+            MaywrWare.fontManager.drawString(setting.getName() + " " + ChatFormatting.GRAY + setting.getValue().toString(), x + 2.3F, y - 1.7F - ClickGUI.getClickGui().getTextOffset(), getState() ? 0xFFFFFFFF : 0xFFAAAAAA);
         }
     }
 

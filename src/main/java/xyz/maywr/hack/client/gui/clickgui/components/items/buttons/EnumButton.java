@@ -4,7 +4,7 @@ import com.mojang.realmsclient.gui.ChatFormatting;
 import xyz.maywr.hack.MaywrWare;
 import xyz.maywr.hack.api.property.Setting;
 import xyz.maywr.hack.api.util.render.RenderUtil;
-import xyz.maywr.hack.client.gui.clickgui.TrollGui;
+import xyz.maywr.hack.client.gui.clickgui.ClickGUI;
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.init.SoundEvents;
 
@@ -21,7 +21,7 @@ public class EnumButton extends Button {
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         RenderUtil.drawRect(x, y, x + width + 7F, y + height - 0.5f, getColor(isHovering(mouseX, mouseY)));
-        MaywrWare.fontManager.drawString(setting.getName() + " " + ChatFormatting.GRAY + setting.currentEnumName(), x + 2.3F, y - 1.7F - TrollGui.getClickGui().getTextOffset(), getState() ? 0xFFFFFFFF : 0xFFAAAAAA);
+        MaywrWare.fontManager.drawString(setting.getName() + " " + ChatFormatting.GRAY + setting.currentEnumName(), x + 2.3F, y - 1.7F - ClickGUI.getClickGui().getTextOffset(), getState() ? 0xFFFFFFFF : 0xFFAAAAAA);
     }
 
     @Override

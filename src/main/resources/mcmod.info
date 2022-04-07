@@ -3,7 +3,7 @@
     "modid": "maywrware",
     "name": "MaywrWare",
     "description": "utility mod aimed at anarchy servers",
-    "version": "0.1",
+    "version": "0.2",
     "mcversion": "${mcversion}",
     "authorList": ["maywr"],
     "credits": "trollgod devs"

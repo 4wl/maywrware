@@ -112,6 +112,7 @@ public class TPSManager implements Minecraftable {
     }
 
     public final float getTPS() {
+        if (mc.isSingleplayer()) return 20F;
         return this.TPS;
     }
 

@@ -5,7 +5,7 @@ import xyz.maywr.hack.MaywrWare;
 import xyz.maywr.hack.api.property.Bind;
 import xyz.maywr.hack.api.property.Setting;
 import xyz.maywr.hack.api.util.render.RenderUtil;
-import xyz.maywr.hack.client.gui.clickgui.TrollGui;
+import xyz.maywr.hack.client.gui.clickgui.ClickGUI;
 import xyz.maywr.hack.client.gui.clickgui.components.items.Item;
 import xyz.maywr.hack.client.modules.Module;
 import net.minecraft.client.audio.PositionedSoundRecord;
@@ -62,9 +62,10 @@ public class ModuleButton extends Button {
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         RenderUtil.drawRect(x, y, x + width, y + height - 0.5f, getColor(isHovering(mouseX, mouseY)));
-        MaywrWare.fontManager.drawString(getName(), x + 2F, y - 2F - TrollGui.getClickGui().getTextOffset(), module.isEnabled() ? getColor() : new Color(160, 160, 160, 255).getRGB());
+        MaywrWare.fontManager.drawString(getName(), x + 2F, y - 2F - ClickGUI.getClickGui().getTextOffset(), module.isEnabled() ? getColor() : new Color(160, 160, 160, 255).getRGB());
+        MaywrWare.fontManager.drawString(subOpen ? "-" : "+",  x + width - 10, y - 2F - ClickGUI.getClickGui().getTextOffset(), module.isEnabled() ? getColor() : new Color(160, 160, 160, 255).getRGB());
+
         if (!this.items.isEmpty()) {
-            //JordoHack.fontManager.drawString(subOpen ? ClickGui.getInstance().buttonClose.getValueAsString() : ClickGui.getInstance().buttonOpen.getValue(), x - 1.5F + width - 7.4F, y - 2F - TrollGui.getClickGui().getTextOffset(), 0xFFFFFFFF);
             if (subOpen) {
                 float height = 1;
                 for (final Item item : items) {

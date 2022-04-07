@@ -1,7 +1,7 @@
 package xyz.maywr.hack.client.modules.client;
 
 import xyz.maywr.hack.api.property.Setting;
-import xyz.maywr.hack.client.gui.clickgui.TrollGui;
+import xyz.maywr.hack.client.gui.clickgui.ClickGUI;
 import xyz.maywr.hack.client.modules.Module;
 import xyz.maywr.hack.client.modules.ModuleManifest;
 import net.minecraft.client.settings.GameSettings;
@@ -49,7 +49,7 @@ public class ClickGui extends Module {
 
     @Override
     public void onTick() {
-    if (!(mc.currentScreen instanceof TrollGui)) {
+    if (!(mc.currentScreen instanceof ClickGUI)) {
             setEnabled(false); //wthat the fuck is that hollow :sob:
         }
 
@@ -61,15 +61,19 @@ public class ClickGui extends Module {
     @Override
     public void onEnable() {
         if (mc.player != null) {
-            mc.displayGuiScreen(new TrollGui());
+            mc.displayGuiScreen(new ClickGUI());
         }
     }
 
     @Override
     public void onDisable() {
-        if (mc.currentScreen instanceof TrollGui) {
+        if (mc.currentScreen instanceof ClickGUI) {
             mc.displayGuiScreen(null);
         }
     }
 
+    @Override
+    public boolean shouldNotify() {
+        return false;
+    }
 }

@@ -9,14 +9,12 @@ import xyz.maywr.hack.api.util.render.RenderUtil;
 import xyz.maywr.hack.client.modules.Module;
 import xyz.maywr.hack.client.modules.ModuleManifest;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 @ModuleManifest(name = "InfoHud", category = Module.Category.HUD, description = "shows some custom infos on screen")
-public class Info extends Module {
+public class Info extends Module implements HUDModule {
 
+    private final Setting<Rainbow> mode = register(new Setting<>("Rainbow Mode", Rainbow.FADING));
     private final Setting<Boolean> sort = register(new Setting<>("Sorting", true));
     private final Setting<Float> x = register(new Setting<>("X", 5F, 1F, 960F));
     private final Setting<Float> y = register(new Setting<>("Y", 5F, 1F, 540F));
@@ -28,9 +26,9 @@ public class Info extends Module {
         List<String> labels = new ArrayList<>();
         labels.add("frames: " + Minecraft.getDebugFPS());
         labels.add("tps: " + String.format("%.1f", MaywrWare.tpsManager.getTPS()));
-        labels.add("ur speed: " + "not done yet..."); //TODO
+        labels.add("speed: " + "not done yet..."); //TODO
         labels.add("server: " + (mc.isSingleplayer() ? "singleplaya" : mc.getCurrentServerData().serverIP));
-        labels.add("ur pingie: " + MaywrWare.tpsManager.getPing());
+        labels.add("ping: " + MaywrWare.tpsManager.getPing() + "ms");
 
         if (sort.getValue()) {
             labels.sort(Comparator.comparing(MaywrWare.fontManager::getStringWidth));
@@ -39,8 +37,14 @@ public class Info extends Module {
 
         float Y = y.getValue(), offset = 0.5f;
         for (String label : labels) {
-            MaywrWare.fontManager.drawString(label, x.getValue() - MaywrWare.fontManager.getStringWidth(label), Y, RenderUtil.generateRainbowFadingColor(offset, true)); Y -= MaywrWare.fontManager.getFontHeight(); offset += 0.5f;
+            if (mode.getValue() == Rainbow.FADING) {
+                MaywrWare.fontManager.drawString(label, x.getValue() - MaywrWare.fontManager.getStringWidth(label)
+                        , Y, RenderUtil.generateRainbowFadingColor(offset, true));
+            } else if (mode.getValue() == Rainbow.CHROMO){
+                MaywrWare.fontManager.drawChromoShadowString(label, x.getValue() - MaywrWare.fontManager.getChromoStringWidth(label)
+                        , Y);
+            }
+            Y -= MaywrWare.fontManager.getFontHeight(); offset += 0.5f;
         }
-
     }
 }
